@@ -1,0 +1,9 @@
+# Optional privacy-first Suplaykart coming-soon pageviews
+
+The original static public launch page stays entirely unchanged until the owner separately enables optional analytics. The local `optional-analytics.js` script exits immediately because `index.html` has `meta[name="owner-optional-analytics"] content="disabled"`. This is intentionally NOT an enabled customer tracker and introduces no external API calls or spending.
+
+After the Vercel project owner verifies Web Analytics access, current included usage limits and any spending/budget controls, a separately reviewed release can change that meta content to `enabled`. Then a visitor sees a consent control and Vercel's tracking script is inserted only after an explicit yes; remembered decline, withdrawal, Do Not Track and Global Privacy Control all prevent further tracking. If a visitor changes a yes to no, the page reloads to remove old analytics listeners. No tracking occurs on non-root URLs, query-string/token links or hashes. No search queries, personal content, form values, button labels or individual customer identities are sent. Only anonymous root page views appear in the Vercel project owner's protected Analytics dashboard, **not** in a customer-facing admin.
+
+The primary Suplaykart Commerce app has a separate, more detailed first-party customer analytics implementation behind approved database/server flags. These two systems must not be merged or used to count the same visit twice. When Coming Soon is retired, disable its collection and archive its report rather than combining counts with the live commerce dashboard.
+
+The manual script path `/_vercel/insights/script.js` must be confirmed after the project-specific Vercel Web Analytics feature is enabled; modern projects may require Vercel's automatically configured private route. Do not activate without this check. 
